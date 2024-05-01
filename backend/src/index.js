@@ -1,9 +1,11 @@
 
 const express = require("express")
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 
 const app = express()
+app.use(cors())
 app.use(express.json())
 const port = 3000
 
@@ -155,6 +157,39 @@ app.post("/:musicId/comments", async (req, res) => {
     }
   })
 
+  // Defina o esquema do modelo de dados
+const DadosSchema = new mongoose.Schema({
+  date: { type: Date, default: Date.now }, // Campo para representar a data
+  quantidade: Number // Campo para representar a quantidade por dia
+});
+
+// Crie o maodelo com base no esquema
+const Dados = mongoose.model('Dados', DadosSchema);
+
+// Endpoint para retornar os dados do gráfico
+app.get('/data', async (req, res) => {
+  try {
+      // Busque os dados do banco de dados e ordene por data
+      const dados = await Dados.find().sort({ date: 1 })
+      console.log("Dados recuperados do banco de dados:", dados)
+
+      // Extrai as datas e quantidades dos dados
+      const labels = dados.map(dado => dado.date.toISOString()); // Formate as datas como strings ISO
+      const values = dados.map(dado => dado.quantidade);
+
+      // Formate os dados no formato necessário para o gráfico
+      const data = {
+          labels: labels,
+          values: values
+      };
+
+      // Retorne os dados como resposta JSON
+      res.json(data);
+  } catch (error) {
+      console.error("Erro ao buscar os dados:", error);
+      res.status(500).send("Erro ao buscar os dados.");
+  }
+});
 
 
 app.listen(port, () =>{
