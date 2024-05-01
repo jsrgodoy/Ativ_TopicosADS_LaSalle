@@ -11,8 +11,10 @@
   "license": "ISC",
   "description": "Atividade avaliativa de Tópicos Especiais em ADS",
   "dependencies": {
+    "ajv": "^8.13.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "express-validator": "^7.0.1",
     "mongoose": "^8.3.2"
   },
   "devDependencies": {
