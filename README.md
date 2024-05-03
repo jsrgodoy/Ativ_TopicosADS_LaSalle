@@ -37,6 +37,6 @@ A solução deverá possuir as seguintes características:
 
 1. Validação dos dados de entrada com JSON Schema
 2. Utilização de ao menos uma sub-collection
-   3.Interface em dashboard que exiba um gráfico com base nos dados do banco.
+3. Interface em dashboard que exiba um gráfico com base nos dados do banco.
 
 Elabore um documento técnico de ao menos 1 página que descreva a API, e a estrutura do banco de dados.

@@ -168,20 +168,20 @@ app.post("/:musicId/comments", async (req, res) => {
   })
   
 // Rota para retornar os dados para o gráfico
-app.get('/data', async (req, res) => {
-  try {
-      // Busque os dados do banco de dados e ordene por data
-      const dados = await Dados.find().sort({ date: 1 })
-      // Extrai as datas e quantidades dos dados
-      const labels = dados.map(dado => dado.date.toISOString()) // Formate as datas como strings ISO
-      const values = dados.map(dado => dado.quantidade)
-      // Formate os dados no formato necessário para o gráfico
-      const data = {labels, values}
+      app.get('/data', async (req, res) => {
+        try {
+            // Busque os dados do banco de dados
+            const musicData = await Music.find()            
+            // Processar os dados para o gráfico
+            const labels = musicData.map(music => music.name) // Use o nome da música como rótulo
+            const values = musicData.length // Use o número total de músicas como valor
+            // Formate os dados no formato necessário para o gráfico
+            const data = { labels, values }            
       // Retorne os dados como resposta JSON
       res.json(data)
   } catch (error) {
-      console.error("Erro ao buscar os dados:", error);
-      res.status(500).send("Erro ao buscar os dados.");
+      console.error("Erro ao buscar os dados:", error)
+      res.status(500).send("Erro ao buscar os dados.")
   }
 })
 
