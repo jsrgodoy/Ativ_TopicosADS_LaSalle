@@ -41,9 +41,7 @@ A solução deverá possuir as seguintes características:
 
 Elabore um documento técnico de ao menos 1 página que descreva a API, e a estrutura do banco de dados.
 
-### CONTEXTUALIZAÇÃO
-
-#### Documento Técnico: API de Músicas e Comentários
+### Documento Técnico: API de Músicas e Comentários
 
 1. Introdução:
    A API de Músicas e Comentários é uma aplicação desenvolvida para gerenciar informações sobre músicas e permitir aos usuários adicionar e visualizar comentários sobre essas músicas. Este documento descreve a estrutura da API e do banco de dados, bem como os endpoints disponíveis para interagir com a API.
